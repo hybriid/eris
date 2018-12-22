@@ -1,0 +1,22 @@
+{
+  "name": "eris",
+  "version": "1.0.0",
+  "description": "Just another discord bot!",
+  "main": "eris.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hybriid/eris.git"
+  },
+  "author": "hybriid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hybriid/eris/issues"
+  },
+  "homepage": "https://github.com/hybriid/eris#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
