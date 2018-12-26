@@ -18,5 +18,9 @@
   "homepage": "https://github.com/hybriid/eris#readme",
   "dependencies": {
     "discord.js": "^11.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
   }
 }
