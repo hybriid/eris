@@ -6,18 +6,18 @@
 
 const msg_prefix = require("../config/msg_prefix.json").prefix;
 
-is_author_human = (msg) => {
+const is_author_human = (msg) => {
     return !msg.author.bot
 }
 
-is_properly_prefixed = (msg) => {
+const is_properly_prefixed = (msg) => {
     // console.log(`First char: ${string_msg}`);
     // console.log(`msg_prefix: ${msg_prefix}`);
     // console.log(`The equality ${string_msg[0] === msg_prefix}`)
     return msg.content.startsWith(msg_prefix);
 }
 
-verify = (msg) => {
+const verify = (msg) => {
     /**
      * Returns true if the message should be
      * parsed

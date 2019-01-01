@@ -4,7 +4,7 @@
  * the user's message into tokens
  */
 
-tokenize_msg = (msg) => {
+const tokenize_msg = (msg) => {
     /**
      * Tokenizes the message raw, returns tokens even 
      * with prefix
@@ -19,7 +19,7 @@ tokenize_msg = (msg) => {
     return trimmed_tokens
 }
 
-tokenize = (msg) => {
+const tokenize = (msg) => {
     /**
      * Returns the tokens without the prefix
      */
