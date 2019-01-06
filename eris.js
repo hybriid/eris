@@ -26,7 +26,7 @@ eris.on("ready", () => {
     console.log(`Eris is currently being used on ${eris.channels.size} servers`);
 })
 
-eris.on("message", async message => {
+eris.on("message", async msg => {
     // // Ignores messages from other bots -- prevents bot loops
     // if (message.author.bot) return;
 
@@ -35,13 +35,13 @@ eris.on("message", async message => {
     // // Ignores messages that do not have the predefined prefix
     // if (msg[0] != msg_config.prefix) return;
 
-    if (!verify.verify(message)) {
-        console.log("bad");
-    }
-    else {
+    if (verify.is_valid(msg)) {
         console.log("good");
     }
-    // command = tokenize.tokenize(msg);
+    else {
+        console.log("bad");
+    }
+    // command = to/Documents/Projects/eris/eris/node_modules/ws/lib/event-target.js:1kenize.tokenize(msg);
 })
 
 eris.login(token);

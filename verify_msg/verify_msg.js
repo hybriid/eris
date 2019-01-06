@@ -11,36 +11,34 @@ const is_author_human = (msg) => {
 }
 
 const is_properly_prefixed = (msg) => {
-    // console.log(`First char: ${string_msg}`);
-    // console.log(`msg_prefix: ${msg_prefix}`);
-    // console.log(`The equality ${string_msg[0] === msg_prefix}`)
     return msg.content.startsWith(msg_prefix);
 }
 
-const verify = (msg) => {
+const verify = (msg, constraints) => {
     /**
-     * Returns true if the message should be
-     * parsed
+     * Applies functions from constraints to msg
+     * 
+     * If any of the functions returns false, then the message
+     * is not parsable
      */
 
-    // All our functions from above.
-    const constraints = [is_author_human, is_properly_prefixed];
+    // Contains all the constraints that returned false with msg as the parameter
+    const functions_returned_false = constraints.filter(fn => fn(msg) === false);
 
-    // Contains all the booleans returned from applying the functions above into msg.
-    const fn_booleans = [];
-
-    // Takes functions from constraints one by one and applies them to msg.
-    // The resulting boolean is then pushed into fn_booleans.
-    constraints.forEach(fn => {
-        fn_boolean = fn(msg);
-        fn_booleans.push(fn_boolean);
-    });
-
-    // If any of the functions in constraints returns false, then should_be_parsed becomes
-    // false
-    const should_be_parsed = !fn_booleans.some(bool => bool === false);
-
-    return should_be_parsed;
+    // If any of the functions returned false, then length would be > 0
+    // Therefore, msg broke one of our constrains and should not be parsed
+    return functions_returned_false.length === 0;
 }
 
-module.exports = {verify};
+const is_valid = (msg) => {
+    /**
+     * Returns true if the message is parsable
+     */
+
+    const constraints = [is_author_human, is_properly_prefixed]
+    return verify(msg, constraints);
+}
+
+module.exports = {
+    is_valid
+};
