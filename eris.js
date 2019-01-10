@@ -11,13 +11,12 @@ const Discord = require("discord.js");
 const eris = new Discord.Client();
 
 /**
- * Initializes various configuration options from the config
- * file
+ * Takes the bot's login token
  */
 const token = require("./config/token.json").token;
 
 /**
- * Imports various models for message parsing
+ * Imports various modules for message parsing
  */
 const tokenize = require("./tokenize/tokenize.js");
 const verify = require("./verify_msg/verify_msg.js");
@@ -27,21 +26,14 @@ eris.on("ready", () => {
 })
 
 eris.on("message", async msg => {
-    // // Ignores messages from other bots -- prevents bot loops
-    // if (message.author.bot) return;
+    // If the msg is not deemed a valid, then ignore it
+    if (!verify.is_valid(msg)) return;
 
-    // msg = message.content;
+    const command = tokenize.tokenize(msg);
 
-    // // Ignores messages that do not have the predefined prefix
-    // if (msg[0] != msg_config.prefix) return;
-
-    if (verify.is_valid(msg)) {
-        console.log("good");
-    }
-    else {
-        console.log("bad");
-    }
-    // command = to/Documents/Projects/eris/eris/node_modules/ws/lib/event-target.js:1kenize.tokenize(msg);
+    /**
+     * TODO: Write code which executres the command
+     */
 })
 
 eris.login(token);
